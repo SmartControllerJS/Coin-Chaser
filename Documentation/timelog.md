@@ -114,3 +114,9 @@
 * *2 hours* Updated issues and created KanBan board on GitHub repository
 * *0.5 hours* Copied supervisor meeting notes to GitHub wiki
 * *2 hours* Collated problems with the SmartController in a list to send to peer for help with implementation
+
+### 16 Nov 2021
+* *2 hours* Refactored JavaScript code from the C# script into it's own directory (for the test unity game) in Assets/Scripts/JavaScript
+* *1 hour* Built 'Test Unity Project' game into a WebGL format 
+* *.5 hour* Pushed test project to GitHub to test its use on GitHub pages
+* *.5 hour* Asked Emma (peer) if she could lead me through the SmartController library in an online meeting before Friday
