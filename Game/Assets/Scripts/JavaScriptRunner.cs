@@ -18,7 +18,7 @@ public class JavaScriptRunner : MonoBehaviour
         var body = "";
         try
         {
-            body = File.ReadAllText(fileName);
+            body = Resources.Load<TextAsset>(fileName).text;
             engine.Execute(body);
         }
         catch (JavaScriptException ex)
@@ -50,7 +50,7 @@ public class JavaScriptRunner : MonoBehaviour
         // It means, that any code in index.js will have access to the log or any other objects we inject
         engine.SetValue("log", new Action<object>(msg => Debug.Log(msg)));
         engine.Execute("var window = this");
-        Execute("Assets/Scripts/JS-Scripts/dist/app.js");
+        Execute("app");
 
         // Get hello function from js file
         engine.Execute("hello()");
