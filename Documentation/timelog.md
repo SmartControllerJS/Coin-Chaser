@@ -120,3 +120,55 @@
 * *1 hour* Built 'Test Unity Project' game into a WebGL format 
 * *.5 hour* Pushed test project to GitHub to test its use on GitHub pages
 * *.5 hour* Asked Emma (peer) if she could lead me through the SmartController library in an online meeting before Friday
+
+### 18 Nov 2021
+* *2 hours* Meeting with Emma, encountered serious issues with importing SmartController Library into Unity
+* *3 hours* Debugging issues with importing but no success. Have to rethink strategy for importing library.
+
+### 19 Nov 2021
+* *1 hour* Meeting with Supervisor and peers. Supervisor suggested researching about multiplayer functionality in Unity to see if that is a suitable strategy
+
+## Week 10
+
+### 22 Nov 2021
+* *5 hours* Research into Unity multiplayer. Found two methods and plan to apply most applicable one that may enable networking and multiplayer
+
+### 24 Nov 2021
+* *2 hours* Applied multiplayer functionality to Unity. Planning to test with JavaScript later for library.
+
+## Week 11
+
+### 30 Nov 2021
+* *3 hours* Tried multiplayer with SmartController library. Still issue with importing SmartController library, debugging did not help. Might be issues with some other packages called by the library.
+
+### 1 Dec 2021
+* *0.5 hours* Messaged supervisor about unwell family member and possible slow progree over this week.
+
+## Week 12
+
+### 8 Dec 2021
+* *1 hour* Scheduled meeting with supervisor to make him aware of death of close family member and discussed previously affected progress over the past few weeks. Supervisor allowed delay of Status Report until Jan 10th 2022.
+* *1 hour* Revised plan and project documentation 
+
+### 10 Dec 2021
+* *1.5 hours* Weekly meeting with supervisor and peers. Discussed expected state for before 14 Jan 2022.
+
+## Week 13
+
+### 16 Dec 2021
+* *3 hours* Continued to debug multiplayer functionality with the library to see if I could find the package causing the bug. No success. Have to re-think approach.
+* *0.5 hour* Created two branches on GitHub. One for the game with Unity multiplayer functionality, and one without. Will work on one without in early January.
+
+## Week 15
+
+### 2 Jan 2022
+* *1 hour* Mass update of timelog to add December work.
+* *2 hours* Planned new approach to Unity implementation. Will try to see if Unity on webpage works with HTML buttons first.
+
+## Week 16
+
+### 3 Jan 2022
+* ** 
+
+### 4 Jan 2022
+* ** 
