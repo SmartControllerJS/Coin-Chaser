@@ -142,7 +142,7 @@
 * *3 hours* Tried multiplayer with SmartController library. Still issue with importing SmartController library, debugging did not help. Might be issues with some other packages called by the library.
 
 ### 1 Dec 2021
-* *0.5 hours* Messaged supervisor about unwell family member and possible slow progree over this week.
+* *0.5 hours* Messaged supervisor about unwell family member and possible slow progress over this week.
 
 ## Week 12
 
@@ -168,7 +168,9 @@
 ## Week 16
 
 ### 3 Jan 2022
-* ** 
+* *1 hour* adjusted project specification document to account for time left for project, select a game to design, and create a bottleneck for if Unity and the library do not work
+* *4 hours* Research into Unity and HTML using the generated WebGL build
+* *3 hours* Writing a new webGL build index.html page for the generated game using templates
 
 ### 4 Jan 2022
 * ** 
