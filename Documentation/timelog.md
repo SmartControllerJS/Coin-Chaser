@@ -171,6 +171,27 @@
 * *1 hour* adjusted project specification document to account for time left for project, select a game to design, and create a bottleneck for if Unity and the library do not work
 * *4 hours* Research into Unity and HTML using the generated WebGL build
 * *3 hours* Writing a new webGL build index.html page for the generated game using templates
+* *8 hours* Attempting to get the player to jump using an added button to the index.html using UnityInstance.SendMessage(). Did not work and I need to understand how to receive the command from HTML to object.
 
 ### 4 Jan 2022
-* ** 
+* *4 hours* Attempting to get the player to jump using button in the index.html using "UnityInstance.SendMessage()." Attempt succeeded, but player is now always jumping.
+
+### 7 Jan 2022
+* *5 hours* Worked on status report as the deadline was extended to the 10th Jan 2022
+* *3.5 hours* Created wireframes for the game idea I had using Figma
+
+### 9 Jan 2022
+* *1 hours* Worked on and submitted status report as the deadline was extended to the 10th Jan 2022
+* *2 hours* Fixed jumping bug by adding a boolean value and setting to false when button not pressed
+* *5 hours* Added left and right HTML buttons to webpage upon build. Functionality is wrong as player only moves one step per click on the button. Unsuccessful in adding hold action.
+* *1 hour* Met with Emma and discussed if incorporating the controller package was feasible. She said it should be, which allows me to start work on that as soon as I get the HTML buttons to work
+* *5 hours* Continued trying to fix horizontal movement issue. Still no success.
+
+## Week 17
+
+### 10 Jan 2022
+* *3 hours* Re-worked wireframes for game. Added assets from asset bundles I bought previously, and fixed some rules.
+
+### 13 Jan 2022
+* *6.5 hours* Continuing to fix horizontal movement issue. Still no real success but could try the setInterval JavaScript function to help with this tomorrow
+* *1 hour* Pushed changes to GitHub 

@@ -1,1 +1,0 @@
-window.hello=function(){return"Hello from JS ES6 file!"};

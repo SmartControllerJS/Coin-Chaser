@@ -1,0 +1,20 @@
+{
+  "name": "interactive-arc-game",
+  "version": "1.0.0",
+  "description": "This is a repository for my Level 4 university project. The goal of the project is to create an interactive game for the public to play using a screen attached to a building (ARC) and smartphones that allow the players to control the game on that screen.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SmartControllerJS/Interactive-ARC-Game.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SmartControllerJS/Interactive-ARC-Game/issues"
+  },
+  "homepage": "https://github.com/SmartControllerJS/Interactive-ARC-Game#readme"
+}
