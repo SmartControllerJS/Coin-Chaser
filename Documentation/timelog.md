@@ -120,3 +120,101 @@
 * *1 hour* Built 'Test Unity Project' game into a WebGL format 
 * *.5 hour* Pushed test project to GitHub to test its use on GitHub pages
 * *.5 hour* Asked Emma (peer) if she could lead me through the SmartController library in an online meeting before Friday
+
+### 18 Nov 2021
+* *2 hours* Meeting with Emma, encountered serious issues with importing SmartController Library into Unity
+* *3 hours* Debugging issues with importing but no success. Have to rethink strategy for importing library.
+
+### 19 Nov 2021
+* *1 hour* Meeting with Supervisor and peers. Supervisor suggested researching about multiplayer functionality in Unity to see if that is a suitable strategy
+
+## Week 10
+
+### 22 Nov 2021
+* *5 hours* Research into Unity multiplayer. Found two methods and plan to apply most applicable one that may enable networking and multiplayer
+
+### 24 Nov 2021
+* *2 hours* Applied multiplayer functionality to Unity. Planning to test with JavaScript later for library.
+
+## Week 11
+
+### 30 Nov 2021
+* *3 hours* Tried multiplayer with SmartController library. Still issue with importing SmartController library, debugging did not help. Might be issues with some other packages called by the library.
+
+### 1 Dec 2021
+* *0.5 hours* Messaged supervisor about unwell family member and possible slow progress over this week.
+
+## Week 12
+
+### 8 Dec 2021
+* *1 hour* Scheduled meeting with supervisor to make him aware of death of close family member and discussed previously affected progress over the past few weeks. Supervisor allowed delay of Status Report until Jan 10th 2022.
+* *1 hour* Revised plan and project documentation 
+
+### 10 Dec 2021
+* *1.5 hours* Weekly meeting with supervisor and peers. Discussed expected state for before 14 Jan 2022.
+
+## Week 13
+
+### 16 Dec 2021
+* *3 hours* Continued to debug multiplayer functionality with the library to see if I could find the package causing the bug. No success. Have to re-think approach.
+* *0.5 hour* Created two branches on GitHub. One for the game with Unity multiplayer functionality, and one without. Will work on one without in early January.
+
+## Week 15
+
+### 2 Jan 2022
+* *1 hour* Mass update of timelog to add December work.
+* *2 hours* Planned new approach to Unity implementation. Will try to see if Unity on webpage works with HTML buttons first.
+
+## Week 16
+
+### 3 Jan 2022
+* *1 hour* adjusted project specification document to account for time left for project, select a game to design, and create a bottleneck for if Unity and the library do not work
+* *4 hours* Research into Unity and HTML using the generated WebGL build
+* *3 hours* Writing a new webGL build index.html page for the generated game using templates
+* *8 hours* Attempting to get the player to jump using an added button to the index.html using UnityInstance.SendMessage(). Did not work and I need to understand how to receive the command from HTML to object.
+
+### 4 Jan 2022
+* *4 hours* Attempting to get the player to jump using button in the index.html using "UnityInstance.SendMessage()." Attempt succeeded, but player is now always jumping.
+
+### 7 Jan 2022
+* *5 hours* Worked on status report as the deadline was extended to the 10th Jan 2022
+* *3.5 hours* Created wireframes for the game idea I had using Figma
+
+### 9 Jan 2022
+* *1 hours* Worked on and submitted status report as the deadline was extended to the 10th Jan 2022
+* *2 hours* Fixed jumping bug by adding a boolean value and setting to false when button not pressed
+* *5 hours* Added left and right HTML buttons to webpage upon build. Functionality is wrong as player only moves one step per click on the button. Unsuccessful in adding hold action.
+* *1 hour* Met with Emma and discussed if incorporating the controller package was feasible. She said it should be, which allows me to start work on that as soon as I get the HTML buttons to work
+* *5 hours* Continued trying to fix horizontal movement issue. Still no success.
+
+## Week 17
+
+### 10 Jan 2022
+* *4 hours* Re-worked wireframes for game. Added assets from asset bundles I bought previously, and fixed some rules.
+
+### 13 Jan 2022
+* *6.5 hours* Continuing to fix horizontal movement issue. Still no real success but could try the setInterval JavaScript function to help with this tomorrow
+* *1 hour* Pushed changes to GitHub 
+
+### 14 Jan 2022
+* *1.5 hours* Weekly meeting with supervisor and peers. Discussed movement issue and progress, with possible solution to issue
+
+## Week 18
+
+### 17 Jan 2022
+* *7 hours* Continuing to fix horizontal movement issue. setInterval results in the same issue, even when holding the html button for movement down. Condition for movement must be being set false somewhere in the player code.
+
+### 19 Jan 2022
+* *2 hours* Made player movement smoother by using velocity component of the rigid body player. 
+* *3 hours* Example dissertation reading
+
+### 21 Jan 2022
+* *1.5 hours* Weekly meeting with supervisor and peers. Discussed possible game prototype by next week.
+
+## Week 19
+
+### 24 Jan 2022
+* *2 hours* Fixed horizontal movement of left html button, now transitions and sets conditions as expected. Problem was a seemingly unused method in the player object
+
+### 27 Jan 2022
+* **
