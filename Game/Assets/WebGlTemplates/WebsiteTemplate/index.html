@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | {{{ PRODUCT_NAME }}}</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
+    <link rel="shortcut icon" href="/TemplateData/favicon.ico">
+    <link rel="stylesheet" href="/TemplateData/style.css">
     <script src="https://unpkg.com/smartcontroller@3.1.0/dist/smartcontroller.min.js"></script>
   </head>
   <body>
@@ -22,9 +22,6 @@
       </div>
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
-        <div class="btn-group">
-          <button id="up"><img src="images/up.png" width="100px" height= "100px"></button>
-        </div>
         <div id="qrcode"><p> Scan the QR code to connect! </p></div>
         <button id="left-button">LEFT</button>
         <button id="jump-button">JUMP</button>
@@ -32,13 +29,13 @@
         <div id="unity-fullscreen-button"></div>
         <div id="unity-build-title">{{{ PRODUCT_NAME }}}</div>
         <div class="btn-group">
-          <button id="up" class="button"><img src="images/up.png" width="100px" height= "100px" style="pointer-events: none"></button>
-          <button id="left" class="button"><img src="images/left.png" width="100px" height= "100px" style="pointer-events: none"></button>
-          <button id="right" class="button"><img src="images/right.png" width="100px" height= "100px" style="pointer-events: none"></button>
+          <button id="left" class="button"><img src="/images/left.png" width="40px" height= "40px" style="pointer-events: none"></button>
+          <button id="up" class="button"><img src="/images/up.png" width="40px" height= "40px" style="pointer-events: none"></button>
+          <button id="right" class="button"><img src="/images/right.png" width="40px" height= "40px" style="pointer-events: none"></button>
         </div>
       </div>
     </div>
-    <script src="controller_receive.js">
+    <script>
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/{{{ LOADER_FILENAME }}}";
       var config = {
