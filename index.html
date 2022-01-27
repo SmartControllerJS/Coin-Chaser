@@ -87,11 +87,20 @@
           jumpButton.onclick = () => {
               unityInstance.SendMessage("Player","JumpButton","true");
           };
-          leftButton.addEventListener("mousedown", function(){ unityInstance.SendMessage("Player","LeftButtonDown","true"); });
-          leftButton.addEventListener("mouseup", function(){ unityInstance.SendMessage("Player","StopMovement","true"); });
-          rightButton.onclick = () => {
-              unityInstance.SendMessage("Player","RightButtonDown","true");
-          };
+
+          leftButton.addEventListener("mousedown", function(){ 
+            unityInstance.SendMessage("Player","LeftButtonDown","true"); 
+          });
+          leftButton.addEventListener("mouseup", function(){ 
+            unityInstance.SendMessage("Player","StopMovement"); 
+          });
+
+          rightButton.addEventListener("mousedown", function(){ 
+            unityInstance.SendMessage("Player","RightButtonDown","true"); 
+          });
+          rightButton.addEventListener("mouseup", function(){ 
+            unityInstance.SendMessage("Player","StopMovement"); 
+          });
         }).catch((message) => {
           alert(message);
         });

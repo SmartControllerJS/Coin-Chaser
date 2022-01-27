@@ -190,8 +190,31 @@
 ## Week 17
 
 ### 10 Jan 2022
-* *3 hours* Re-worked wireframes for game. Added assets from asset bundles I bought previously, and fixed some rules.
+* *4 hours* Re-worked wireframes for game. Added assets from asset bundles I bought previously, and fixed some rules.
 
 ### 13 Jan 2022
 * *6.5 hours* Continuing to fix horizontal movement issue. Still no real success but could try the setInterval JavaScript function to help with this tomorrow
 * *1 hour* Pushed changes to GitHub 
+
+### 14 Jan 2022
+* *1.5 hours* Weekly meeting with supervisor and peers. Discussed movement issue and progress, with possible solution to issue
+
+## Week 18
+
+### 17 Jan 2022
+* *7 hours* Continuing to fix horizontal movement issue. setInterval results in the same issue, even when holding the html button for movement down. Condition for movement must be being set false somewhere in the player code.
+
+### 19 Jan 2022
+* *2 hours* Made player movement smoother by using velocity component of the rigid body player. 
+* *3 hours* Example dissertation reading
+
+### 21 Jan 2022
+* *1.5 hours* Weekly meeting with supervisor and peers. Discussed possible game prototype by next week.
+
+## Week 19
+
+### 24 Jan 2022
+* *2 hours* Fixed horizontal movement of left html button, now transitions and sets conditions as expected. Problem was a seemingly unused method in the player object
+
+### 27 Jan 2022
+* **

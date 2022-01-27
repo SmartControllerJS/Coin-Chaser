@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
     private bool upPressed = false;
     private bool rightPressed = false;
     private bool leftPressed = false;
-    private float horizontal_value = 0;
     private float speed;
 
     // Start is called before the first frame update
@@ -35,36 +34,37 @@ public class Player : MonoBehaviour
 
         horizontalInput = Input.GetAxis("Horizontal");
 
-        if (leftPressed)
-        {
-            horizontalInput = horizontalInput - 1;
-        }
-
-        if (rightPressed)
-        {
-            horizontalInput = horizontalInput + 1;
-            rightPressed = false;
-        }
-
     }
 
     private void FixedUpdate()
     {
-        rigidbodyComponent.velocity = new Vector3(horizontalInput, rigidbodyComponent.velocity.y, 0);
+        // Horizontal movement using buttons
+        Debug.Log("Left value is :" + leftPressed);
+        if (leftPressed)
+        {
+            rigidbodyComponent.velocity = new Vector3(-1,rigidbodyComponent.velocity.y,0);
+        }
+        else if (rightPressed) 
+        {
+            rigidbodyComponent.velocity = new Vector3(1,rigidbodyComponent.velocity.y,0);
+        }
+        else
+        {
+            rigidbodyComponent.velocity = new Vector3(horizontalInput, rigidbodyComponent.velocity.y, 0);
+        }
 
-
+        // Collision check using a shere overlap
         if (Physics.OverlapSphere(groundCheckTransform.position, 0.1f, playerMask).Length == 0)
         {
             return;
         }
 
+        // Jump movement check
         if (jumpKeyWasPressed)
         {
             rigidbodyComponent.AddForce(Vector3.up * 6, ForceMode.VelocityChange);
             jumpKeyWasPressed = false;
         }
-
-        leftPressed = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -83,8 +83,8 @@ public class Player : MonoBehaviour
 
     public void RightButtonDown()
     {
-        Debug.Log("Log: right was pressed");
         rightPressed = true;
+        Debug.Log("Log: right was pressed");
     }
 
     public void LeftButtonDown()
@@ -93,17 +93,11 @@ public class Player : MonoBehaviour
         Debug.Log("Log: Left was pressed");
     }
 
-    public void RightButtonUp()
-    {
-        rightPressed = false;
-        Debug.Log("Log: Right was unpressed");
-    }
-
     public void StopMovement()
     {
         leftPressed = false;
+        rightPressed = false;
         Debug.Log("Log: Movement stopped");
-        horizontal_value = 0;
     }
 
 }

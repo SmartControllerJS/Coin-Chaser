@@ -30,11 +30,11 @@
     </div>
     <script>
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/Build.loader.js";
+      var loaderUrl = buildUrl + "/Build/Build.loader.js";
       var config = {
-        dataUrl: buildUrl + "/Build.data.unityweb",
-        frameworkUrl: buildUrl + "/Build.framework.js.unityweb",
-        codeUrl: buildUrl + "/Build.wasm.unityweb",
+        dataUrl: buildUrl + "/Build/Build.data.unityweb",
+        frameworkUrl: buildUrl + "/Build/Build.framework.js.unityweb",
+        codeUrl: buildUrl + "/Build/Build.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "SmartControllerJS",
         productName: "My project",
@@ -87,11 +87,20 @@
           jumpButton.onclick = () => {
               unityInstance.SendMessage("Player","JumpButton","true");
           };
-          leftButton.addEventListener("mousedown", function(){ unityInstance.SendMessage("Player","LeftButtonDown","true"); });
-          leftButton.addEventListener("mouseup", function(){ unityInstance.SendMessage("Player","StopMovement","true"); });
-          rightButton.onclick = () => {
-              unityInstance.SendMessage("Player","RightButtonDown","true");
-          };
+
+          leftButton.addEventListener("mousedown", function(){ 
+            unityInstance.SendMessage("Player","LeftButtonDown","true"); 
+          });
+          leftButton.addEventListener("mouseup", function(){ 
+            unityInstance.SendMessage("Player","StopMovement"); 
+          });
+
+          rightButton.addEventListener("mousedown", function(){ 
+            unityInstance.SendMessage("Player","RightButtonDown","true"); 
+          });
+          rightButton.addEventListener("mouseup", function(){ 
+            unityInstance.SendMessage("Player","StopMovement"); 
+          });
         }).catch((message) => {
           alert(message);
         });
