@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
+    private Vector2 originalPos;
     private bool jumpKeyWasPressed;
     private float horizontalInput;
-    private Rigidbody rigidbodyComponent;
+    private Rigidbody2D rigidbodyComponent;
     private bool isGrounded;
     [SerializeField] private Transform groundCheckTransform;
     [SerializeField] private LayerMask playerMask;
@@ -20,13 +20,14 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rigidbodyComponent = GetComponent<Rigidbody>();
+        rigidbodyComponent = GetComponent<Rigidbody2D>();
+        originalPos = gameObject.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (upPressed)
+        if (upPressed || Input.GetKeyDown("space"))
         {
             jumpKeyWasPressed = true;
             upPressed = false;
@@ -39,46 +40,50 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         // Horizontal movement using buttons
-        Debug.Log("Left value is :" + leftPressed);
         if (leftPressed)
         {
-            rigidbodyComponent.velocity = new Vector3(-1,rigidbodyComponent.velocity.y,0);
+            rigidbodyComponent.velocity = new Vector2(-1,rigidbodyComponent.velocity.y);
         }
         else if (rightPressed) 
         {
-            rigidbodyComponent.velocity = new Vector3(1,rigidbodyComponent.velocity.y,0);
+            rigidbodyComponent.velocity = new Vector2(1,rigidbodyComponent.velocity.y);
         }
         else
         {
-            rigidbodyComponent.velocity = new Vector3(horizontalInput, rigidbodyComponent.velocity.y, 0);
+            rigidbodyComponent.velocity = new Vector2(horizontalInput, rigidbodyComponent.velocity.y);
         }
 
         // Collision check using a shere overlap
-        if (Physics.OverlapSphere(groundCheckTransform.position, 0.1f, playerMask).Length == 0)
-        {
+        if (Physics2D.OverlapCircleAll(groundCheckTransform.position, 0.1f, playerMask).Length == 0)
+        {   
             return;
         }
 
         // Jump movement check
         if (jumpKeyWasPressed)
         {
-            rigidbodyComponent.AddForce(Vector3.up * 6, ForceMode.VelocityChange);
+            rigidbodyComponent.AddForce(new Vector2(0f, 5f), ForceMode2D.Impulse);
             jumpKeyWasPressed = false;
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == 7)
         {
             Destroy(other.gameObject);
         }
+        if (other.gameObject.layer == 8)
+        {
+            Debug.Log("Position = " + originalPos);
+            transform.position = originalPos;
+        }
     }
 
     private void JumpButton()
     {
-        Debug.Log("Log: Jump was pressed");
         upPressed = true;
+        Debug.Log("Log: Jump was pressed");
     }
 
     public void RightButtonDown()

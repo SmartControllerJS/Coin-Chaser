@@ -1,6 +1,3 @@
-// Use the import statement for webpack or a different bundler
-import "smartcontroller";
-
 const simplePeer = new smartcontroller.NesSmartController("123456789");
 simplePeer.createQrCode(
   "https://smartcontrollerjs.github.io/Controllers/nesController.html",

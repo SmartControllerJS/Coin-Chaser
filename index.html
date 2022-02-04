@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | My project</title>
+    <title>Unity WebGL Player | 2D-Game</title>
     <link rel="shortcut icon" href="Build/TemplateData/favicon.ico">
     <link rel="stylesheet" href="Build/TemplateData/style.css">
     <script src="https://unpkg.com/smartcontroller@3.1.0/dist/smartcontroller.min.js"></script>
@@ -23,19 +23,18 @@
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="qrcode"><p> Scan the QR code to connect! </p></div>
-        <button id="left-button">LEFT</button>
-        <button id="jump-button">JUMP</button>
-        <button id="right-button">RIGHT</button>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">My project</div>
-        <div class="btn-group">
-          <button id="left" class="button"><img src="Build/images/left.png" width="40px" height= "40px" style="pointer-events: none"></button>
-          <button id="up" class="button"><img src="Build/images/up.png" width="40px" height= "40px" style="pointer-events: none"></button>
-          <button id="right" class="button"><img src="Build/images/right.png" width="40px" height= "40px" style="pointer-events: none"></button>
-        </div>
+        <div id="unity-build-title">2D-Game</div>
+      </div>
+      <div class="btn-group">
+        <button id="left" class="button"><img src="Build/images/left.png" width="40px" height= "40px" style="pointer-events: none"></button>
+        <button id="up" class="button"><img src="Build/images/up.png" width="40px" height= "40px" style="pointer-events: none"></button>
+        <button id="right" class="button"><img src="Build/images/right.png" width="40px" height= "40px" style="pointer-events: none"></button>
       </div>
     </div>
+
     <script>
+
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/Build/Build.loader.js";
       var config = {
@@ -55,9 +54,9 @@
       var fullscreenButton = document.querySelector("#unity-fullscreen-button");
       var mobileWarning = document.querySelector("#unity-mobile-warning");
 
-      var leftButton = document.querySelector("#left-button")
-      var jumpButton = document.querySelector("#jump-button")
-      var rightButton = document.querySelector("#right-button")
+      var left = document.getElementById("left")
+      var up = document.getElementById("up")
+      var right = document.getElementById("right")
 
       // By default Unity keeps WebGL canvas render target size matched with
       // the DOM size of the canvas element (scaled by window.devicePixelRatio)
@@ -91,21 +90,21 @@
           fullscreenButton.onclick = () => {
             unityInstance.SetFullscreen(1);
           };
-          jumpButton.onclick = () => {
+          up.onclick = () => {
               unityInstance.SendMessage("Player","JumpButton","true");
           };
 
-          leftButton.addEventListener("mousedown", function(){ 
+          left.addEventListener("mousedown", function(){ 
             unityInstance.SendMessage("Player","LeftButtonDown","true"); 
           });
-          leftButton.addEventListener("mouseup", function(){ 
+          left.addEventListener("mouseup", function(){ 
             unityInstance.SendMessage("Player","StopMovement"); 
           });
 
-          rightButton.addEventListener("mousedown", function(){ 
-            unityInstance.SendMessage("Player","RightButtonDown","true"); 
+          right.addEventListener("mousedown", function(){ 
+            unityInstance.SendMessage("Player","RightDown","true"); 
           });
-          rightButton.addEventListener("mouseup", function(){ 
+          right.addEventListener("mouseup", function(){ 
             unityInstance.SendMessage("Player","StopMovement"); 
           });
         }).catch((message) => {
@@ -113,6 +112,45 @@
         });
       };
       document.body.appendChild(script);
+
+
+      const simplePeer = new smartcontroller.NesSmartController("123456789");
+      simplePeer.createQrCode(
+        "https://smartcontrollerjs.github.io/Controllers/nesController.html",
+        "qrcode",
+        150,
+        150,
+        "1"
+      );
+
+      //listen for new connections and log them in the console
+      simplePeer.on("connection", function (data) {
+          console.log(data);
+      });
+
+      processData();
+
+      //a function that checks if player 1 is connected
+      //if yes then check the arrow keys to highlight the buttons
+      function processData() {
+          if (simplePeer.controllerList[1]) {
+              //store the controller to access its fields
+              //the dictionary key is 1 because a player ID has been specified, otherwise the peer ID from smartphone will be used
+              var controller = simplePeer.controllerList[1];
+              var button_id = ["left", "up", "right"];
+              //check if up button is pressed, if yes change the background colour from gray to yellow
+              //then do the same for the remaining arrows
+              for (var id of button_id) {
+                if (controller.buttons[id]) {
+                    document.getElementById(id).style.backgroundColor = "#e9ec06";
+                    document.getElementById(id).click();
+                } else {
+                    document.getElementById(id).style.backgroundColor = "#dddcdc";
+                }
+              }
+          }
+          requestAnimationFrame(processData);
+      }
 
     </script>
   </body>
