@@ -34,7 +34,6 @@
     </div>
 
     <script>
-
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/Build.loader.js";
       var config = {
@@ -49,6 +48,7 @@
 
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
+
       var loadingBar = document.querySelector("#unity-loading-bar");
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
       var fullscreenButton = document.querySelector("#unity-fullscreen-button");
@@ -102,7 +102,7 @@
           });
 
           right.addEventListener("mousedown", function(){ 
-            unityInstance.SendMessage("Player","RightDown","true"); 
+            unityInstance.SendMessage("Player","RightButtonDown","true"); 
           });
           right.addEventListener("mouseup", function(){ 
             unityInstance.SendMessage("Player","StopMovement"); 
@@ -113,7 +113,6 @@
       };
       document.body.appendChild(script);
 
-
       const simplePeer = new smartcontroller.NesSmartController("123456789");
       simplePeer.createQrCode(
         "https://smartcontrollerjs.github.io/Controllers/nesController.html",
@@ -122,11 +121,6 @@
         150,
         "1"
       );
-
-      //listen for new connections and log them in the console
-      simplePeer.on("connection", function (data) {
-          console.log(data);
-      });
 
       processData();
 
