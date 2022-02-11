@@ -123,29 +123,18 @@
         "1"
       );
 
-      processData();
-
-      //a function that checks if player 1 is connected
-      //if yes then check the arrow keys to highlight the buttons
-      function processData() {
-          if (simplePeer.controllerList[1]) {
-              //store the controller to access its fields
-              //the dictionary key is 1 because a player ID has been specified, otherwise the peer ID from smartphone will be used
-              var controller = simplePeer.controllerList[1];
-              var button_id = ["left", "up", "right"];
-              //check if up button is pressed, if yes change the background colour from gray to yellow
-              //then do the same for the remaining arrows
-              for (var id of button_id) {
-                if (controller.buttons[id]) {
-                    document.getElementById(id).style.backgroundColor = "#e9ec06";
-                    document.getElementById(id).click();
-                } else {
-                    document.getElementById(id).style.backgroundColor = "#dddcdc";
-                }
-              }
-          }
-          requestAnimationFrame(processData);
-      }
+      // get the detail of button pressed on smartcontroller and perform function with that data
+      simplePeer.on( 'data',  function(message){
+        buttonPressed = message.data.data.button;
+        buttonState = message.data.data.state;
+        if (buttonPressed == "up" && buttonState == "start") {
+          document.getElementById("up").style.backgroundColor = "#e9ec06";
+          // simulate clicking the jump button 
+          document.getElementById("up").click();
+        } else {
+          document.getElementById("up").style.backgroundColor = "#dddcdc";
+        }
+      }) ;
 
     </script>
   </body>
