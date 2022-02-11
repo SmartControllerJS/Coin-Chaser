@@ -80,6 +80,16 @@
       }
       loadingBar.style.display = "block";
 
+      // create QR code and connection
+      const simplePeer = new smartcontroller.NesSmartController("123456789");
+      simplePeer.createQrCode(
+        "https://smartcontrollerjs.github.io/Controllers/nesController.html",
+        "qrcode",
+        150,
+        150,
+        "1"
+      );
+
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
@@ -90,51 +100,36 @@
           fullscreenButton.onclick = () => {
             unityInstance.SetFullscreen(1);
           };
-          up.onclick = () => {
+
+          // get the detail of button pressed on smartcontroller and perform function with that data
+          simplePeer.on( 'data',  function(message){
+            buttonPressed = message.data.data.button;
+            buttonState = message.data.data.state;
+
+            if (buttonPressed == "up" && buttonState == "start") {
               unityInstance.SendMessage("Player","JumpButton","true");
-          };
+            } 
 
-          left.addEventListener("mousedown", function(){ 
-            unityInstance.SendMessage("Player","LeftButtonDown","true"); 
-          });
-          left.addEventListener("mouseup", function(){ 
-            unityInstance.SendMessage("Player","StopMovement"); 
-          });
+            if (buttonPressed == "right" && buttonState == "start") {
+              unityInstance.SendMessage("Player","RightButtonDown","true");
+            } else if (buttonPressed == "right" && buttonState == "end") {
+              unityInstance.SendMessage("Player","StopMovement"); 
+            }
 
-          right.addEventListener("mousedown", function(){ 
-            unityInstance.SendMessage("Player","RightButtonDown","true"); 
-          });
-          right.addEventListener("mouseup", function(){ 
-            unityInstance.SendMessage("Player","StopMovement"); 
-          });
+            if (buttonPressed == "left" && buttonState == "start") {
+              console.log("right was pressed");
+              unityInstance.SendMessage("Player","LeftButtonDown","true");
+            }else if (buttonPressed == "left" && buttonState == "end") {
+              unityInstance.SendMessage("Player","StopMovement"); 
+            }
+          }) ;
         }).catch((message) => {
           alert(message);
         });
       };
       document.body.appendChild(script);
 
-
-      const simplePeer = new smartcontroller.NesSmartController("123456789");
-      simplePeer.createQrCode(
-        "https://smartcontrollerjs.github.io/Controllers/nesController.html",
-        "qrcode",
-        150,
-        150,
-        "1"
-      );
-
-      // get the detail of button pressed on smartcontroller and perform function with that data
-      simplePeer.on( 'data',  function(message){
-        buttonPressed = message.data.data.button;
-        buttonState = message.data.data.state;
-        if (buttonPressed == "up" && buttonState == "start") {
-          document.getElementById("up").style.backgroundColor = "#e9ec06";
-          // simulate clicking the jump button 
-          document.getElementById("up").click();
-        } else {
-          document.getElementById("up").style.backgroundColor = "#dddcdc";
-        }
-      }) ;
+      
 
     </script>
   </body>
