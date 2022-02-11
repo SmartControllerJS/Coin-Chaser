@@ -217,4 +217,21 @@
 * *2 hours* Fixed horizontal movement of left html button, now transitions and sets conditions as expected. Problem was a seemingly unused method in the player object
 
 ### 27 Jan 2022
-* **
+* *6 hours* Tried implementation of the smartController library to no success using Demo on the package website. Got errors with WebRTC and some pop-ups
+* *3 hours* Discussed issues with package creator, Emma, and figured that the pop-up issue might be from using the university Internet service, eduroam. 
+
+### 28 Jan 2022
+* *1.5 hours* Meeting with advisor and peers. Discussed eduroam issue, and next goals. eduroam issue is ignorable for now 
+* *2 hours*  Continued SmartController package implementation but keep recieving WebRTC error when connecting
+
+## Week 20
+
+### 2 February 2022
+* *5 hours* Recreating game demo in 2D 
+
+### 3 February 2022
+* *6 hours* Finished recreating game demo in 2D instead of 3D
+
+### 4 February 2022
+* *2 hours* Continued smartphoneController implementation, trying to fix WebRTC issue. Found that issue appears on Firefox but not Chrome.
+* *1 hour* Added Jump functionality to smartphoneController. Works on Chrome, not Firefox. Also messaged Emma about WebRTC issue and pushed changes to GitHub.
