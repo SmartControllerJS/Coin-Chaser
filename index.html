@@ -81,7 +81,7 @@
       loadingBar.style.display = "block";
 
       // create QR code and connection
-      const simplePeer = new smartcontroller.NesSmartController("123456789");
+      const simplePeer = new smartcontroller.NesSmartController();
       simplePeer.createQrCode(
         "https://smartcontrollerjs.github.io/Controllers/nesController.html",
         "qrcode",
@@ -117,7 +117,6 @@
             }
 
             if (buttonPressed == "left" && buttonState == "start") {
-              console.log("right was pressed");
               unityInstance.SendMessage("Player","LeftButtonDown","true");
             }else if (buttonPressed == "left" && buttonState == "end") {
               unityInstance.SendMessage("Player","StopMovement"); 
