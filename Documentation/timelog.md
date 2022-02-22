@@ -221,7 +221,7 @@
 * *3 hours* Discussed issues with package creator, Emma, and figured that the pop-up issue might be from using the university Internet service, eduroam. 
 
 ### 28 Jan 2022
-* *1.5 hours* Meeting with advisor and peers. Discussed eduroam issue, and next goals. eduroam issue is ignorable for now 
+* *1.5 hours* Meeting with supervisor and peers. Discussed eduroam issue, and next goals. eduroam issue is ignorable for now 
 * *2 hours*  Continued SmartController package implementation but keep recieving WebRTC error when connecting
 
 ## Week 20
@@ -235,3 +235,46 @@
 ### 4 February 2022
 * *2 hours* Continued smartphoneController implementation, trying to fix WebRTC issue. Found that issue appears on Firefox but not Chrome.
 * *1 hour* Added Jump functionality to smartphoneController. Works on Chrome, not Firefox. Also messaged Emma about WebRTC issue and pushed changes to GitHub.
+* *1.5 hours* Meeting with supervisor and peers. Decided the WebRTC issue was probaly due to an extension I had on Firefox, so no need to worry about it.
+
+
+## Week 21
+
+### 7 February 2022
+* *6 hours* Successfully implemented smartController with jump button, but the function sends too many jumps at once, adding to player jump hight
+
+### 10 February 2022
+* *3 hours* Attempted to debug jump issue, no real success. Might have to do with smartController library.
+
+### 11 February 2022
+* *1.5 hours* Meeting with supervisor and peers. Emma suggested replacing the processData function with a simplePeer function used in the package to solve Jump issue. 
+* *1 hour* Tried to see how many jump requests were sent in a second to see how to solve issue. Jumping requests were sent too fast and holding button down added to the jump.
+* *3 hours* Solved jump issue and now added horizontal movement with smartController too using simplePeer function Emma sent. 
+* *.5 hour* Made it so that the QR code generated varies for each page the game is open in. Got rid of unique ID
+
+## Week 22
+
+### 16 February 2022
+* *6 hours* Learned to replace assets of the game with ones available from the Unity Asset store.
+* *3 hours* Replaced assets of the game with ones available from the Unity Asset store. 
+
+### 17 February 2022
+* *3.5 hours* Attempted to create animations for the single player movement but issue with jumping animation. Need to rethink player movement.
+* *2 hours* Smart controller stopped working for me. Found that the issue might be from a package update. Messaged Emma about this.
+
+### 18 February 2022
+* *1 hour* Meeting with supervisor and peers. Emma sent an updated link for the smartController package to fix the issue I was having. Next task is multiplayer.
+* *2 hours* Creates a method to spawn players when connected using the smartController. Only works single player for now.
+* *1.5 hours* Created different shaded players that should be able to recieve individual commands. 
+
+### 20 February 2022
+* *3 hours* Prepared game for multiple players by storing them in a dictionary that they can be activated from. Had to rewrite camera script.
+* *2 hours* Debugging game crash with multiplayer after spawning player1. Might be due to use of dictionaries in CamScript.
+
+## Week 23
+
+### 21 February 2022
+* *2 hours* Successfully debugged game crash with multiplayer after spawning player1. Dictionaries in C# cannot have value changed when iterating over them
+* *2.5 hours* Added multiplayer functionality and talked to Emma to see if method used is efficient 
+* *3 hours* Added function to unactivate a player if they disconnect from the game
+* *1 hour* Moved QR code to center of webpage above game, got rid of unnecessary buttons on page
