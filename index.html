@@ -11,6 +11,9 @@
   <body>
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=960 height=600></canvas>
+
+      <div id="qrdisplay"><div id="qrcode"></div></div>
+
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -22,14 +25,8 @@
       </div>
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
-        <div id="qrcode"><p> Scan the QR code to connect! </p></div>
         <div id="unity-fullscreen-button"></div>
         <div id="unity-build-title">2D-Game</div>
-      </div>
-      <div class="btn-group">
-        <button id="left" class="button"><img src="Build/images/left.png" width="40px" height= "40px" style="pointer-events: none"></button>
-        <button id="up" class="button"><img src="Build/images/up.png" width="40px" height= "40px" style="pointer-events: none"></button>
-        <button id="right" class="button"><img src="Build/images/right.png" width="40px" height= "40px" style="pointer-events: none"></button>
       </div>
     </div>
 
@@ -49,14 +46,14 @@
 
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
+
+      // Set QR code element
+      var qrDisplay = document.querySelector("#qrdisplay");
+
       var loadingBar = document.querySelector("#unity-loading-bar");
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
       var fullscreenButton = document.querySelector("#unity-fullscreen-button");
       var mobileWarning = document.querySelector("#unity-mobile-warning");
-
-      var left = document.getElementById("left")
-      var up = document.getElementById("up")
-      var right = document.getElementById("right")
 
       // By default Unity keeps WebGL canvas render target size matched with
       // the DOM size of the canvas element (scaled by window.devicePixelRatio)
@@ -87,8 +84,11 @@
         "qrcode",
         150,
         150,
-        "1"
       );
+
+      var playerDict = {
+        "Player1":null, "Player2":null, "Player3":null, "Player4":null, "Player5":null
+      }
 
       var script = document.createElement("script");
       script.src = loaderUrl;
@@ -97,39 +97,74 @@
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
           loadingBar.style.display = "none";
+
+          // Display QR code element on game load
+          qrDisplay.style.display = "block";
+          
           fullscreenButton.onclick = () => {
             unityInstance.SetFullscreen(1);
           };
 
-          // get the detail of smartController button pressed on smartcontroller and perform function with that data
+          // Activate player character once a peer is connected
+          simplePeer.on("connection", function (peer) {
+            var nullExists = false;
+            for ([player, playerid] of Object.entries(playerDict)){
+              if (playerid == null){
+                playerDict[player] = peer.peer;
+                unityInstance.SendMessage("Main Camera","SpawnPlayers", player);
+                nullExists = true;
+                break;
+              }
+            }
+
+            // if over 5 players, disconnect peer
+            if (nullExists == false){
+              peer.send({ type: "disconnect" });
+            }
+          });
+          
+          // If a player is disconnected, unactivate player
+          simplePeer.on("close", function (peer) {
+            console.log(peer);
+            for ([player, playerid] of Object.entries(playerDict)){
+              if (playerid == peer){
+                playerDict[player] = null;
+                console.log("DISCONNECTED");
+              }
+            }
+          });
+
+          // Get button pressed on smartcontroller and perform function with data received
           simplePeer.on( 'data',  function(message){
-            buttonPressed = message.data.data.button;
-            buttonState = message.data.data.state;
+            for ([player, playerid] of Object.entries(playerDict)){
+              if (playerid == message.id){
+                buttonPressed = message.data.data.button;
+                buttonState = message.data.data.state;
 
-            if (buttonPressed == "up" && buttonState == "start") {
-              unityInstance.SendMessage("Player","JumpButton","true");
-            } 
+                if (buttonPressed == "up" && buttonState == "start") {
+                  unityInstance.SendMessage(player,"JumpButton","true");
+                } 
 
-            if (buttonPressed == "right" && buttonState == "start") {
-              unityInstance.SendMessage("Player","RightButtonDown","true");
-            } else if (buttonPressed == "right" && buttonState == "end") {
-              unityInstance.SendMessage("Player","StopMovement"); 
+                if (buttonPressed == "right" && buttonState == "start") {
+                  unityInstance.SendMessage(player,"RightButtonDown","true");
+                } else if (buttonPressed == "right" && buttonState == "end") {
+                  unityInstance.SendMessage(player,"StopMovement"); 
+                }
+
+                if (buttonPressed == "left" && buttonState == "start") {
+                  unityInstance.SendMessage(player,"LeftButtonDown","true");
+                }else if (buttonPressed == "left" && buttonState == "end") {
+                  unityInstance.SendMessage(player,"StopMovement"); 
+                }
+              }
             }
-
-            if (buttonPressed == "left" && buttonState == "start") {
-              unityInstance.SendMessage("Player","LeftButtonDown","true");
-            }else if (buttonPressed == "left" && buttonState == "end") {
-              unityInstance.SendMessage("Player","StopMovement"); 
-            }
+          
           }) ;
         }).catch((message) => {
           alert(message);
         });
       };
-      document.body.appendChild(script);
-
-
-      
+      document.body.appendChild(script); 
 
     </script>
   </body>
