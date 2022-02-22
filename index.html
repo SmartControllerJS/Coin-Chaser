@@ -128,6 +128,7 @@
             for ([player, playerid] of Object.entries(playerDict)){
               if (playerid == peer){
                 playerDict[player] = null;
+                console.log(playerDict);
                 console.log("DISCONNECTED");
               }
             }
