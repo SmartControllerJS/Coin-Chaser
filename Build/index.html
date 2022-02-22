@@ -120,12 +120,6 @@
                 break;
               }
             }
-
-            // if over 5 players, disconnect peer
-            if (nullExists == false){
-              console.log("PEER DISCONNECTED");
-              peer.send({ type: "disconnect" });
-            }
           });
           
           // If a player is disconnected, unactivate player
