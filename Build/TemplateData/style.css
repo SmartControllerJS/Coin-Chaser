@@ -16,8 +16,9 @@ body { padding: 0; margin: 0 }
 #unity-mobile-warning { position: absolute; left: 50%; top: 5%; transform: translate(-50%); background: white; padding: 10px; display: none }
 
 #qrdisplay {
-    position: absolute; 
-    left: 45%; 
-    top: 2.5%; 
+    position: fixed; 
+    left: 50%; 
+    top: 12%; 
+    transform: translate(-50%, -50%);
     display: none
     }
