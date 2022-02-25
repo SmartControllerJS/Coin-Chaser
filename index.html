@@ -32,7 +32,7 @@
 
     <script>
 
-      var buildUrl = "Build/Build/";
+      var buildUrl = "Build/Build";
       var loaderUrl = buildUrl + "/Build.loader.js";
       var config = {
         dataUrl: buildUrl + "/Build.data",
@@ -122,18 +122,6 @@
             }
           });
           
-          // If a player is disconnected, unactivate player
-          simplePeer.on("close", function (peer) {
-            console.log(peer);
-            for ([player, playerid] of Object.entries(playerDict)){
-              if (playerid == peer){
-                playerDict[player] = null;
-                console.log(playerDict);
-                console.log("DISCONNECTED");
-              }
-            }
-          });
-
           // Get button pressed on smartcontroller and perform function with data received
           simplePeer.on( 'data',  function(message){
             console.log("Command Recognised");
@@ -159,8 +147,19 @@
                 }
               }
             }
-          
           });
+
+          // If a player is disconnected, unactivate player
+          simplePeer.on("close", function (peer) {
+            console.log(peer);
+            for ([player, playerid] of Object.entries(playerDict)){
+              if (playerid == peer){
+                playerDict[player] = null;
+                console.log("DISCONNECTED");
+              }
+            }
+          });
+
         }).catch((message) => {
           alert(message);
         });
