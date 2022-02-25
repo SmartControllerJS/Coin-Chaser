@@ -123,7 +123,7 @@
           });
           
           // Get button pressed on smartcontroller and perform function with data received
-          simplePeer.on( 'data',  function(message){
+          simplePeer.on( "data",  function(message){
             console.log("Command Recognised");
             for ([player, playerid] of Object.entries(playerDict)){
               if (playerid == message.id){

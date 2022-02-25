@@ -6,7 +6,7 @@
     <title>Unity WebGL Player | 2D-Game</title>
     <link rel="shortcut icon" href="Build/TemplateData/favicon.ico">
     <link rel="stylesheet" href="Build/TemplateData/style.css">
-    <script src="https://unpkg.com/smartcontroller@3.1.0/dist/smartcontroller.min.js"></script>
+    <script src="https://unpkg.com/smartcontroller@3.2.2/dist/smartcontroller.min.js"></script>
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
@@ -123,7 +123,7 @@
           });
           
           // Get button pressed on smartcontroller and perform function with data received
-          simplePeer.on( 'data',  function(message){
+          simplePeer.on( "data",  function(message){
             console.log("Command Recognised");
             for ([player, playerid] of Object.entries(playerDict)){
               if (playerid == message.id){
