@@ -279,7 +279,16 @@
 * *3 hours* Added function to unactivate a player if they disconnect from the game
 * *1 hour* Moved QR code to center of webpage above game, got rid of unnecessary buttons on page
 
+### 24 February 2022
+* *4 hours* Attempts to fix GitHub Pages issue of no movement. No success. Created Teams post for help.
+
+### 25 February 2022
+* *1 hour* Fixed GitHub Pages issue of no movement. Had to update SmartController version.
+* *1.5 hours* Meeting with supervisor and peers. Supervisor suggested showing people game once it's made to evaluate how it would be used without guidance. 
 
 ## Week 24
+
+### 28 February 2022
 * *2 hours* Watch Brackeys' tutorial on character movement, download CharacterController2D script template provided while removing character crouch movements
 * *3 hours* Redesigned character movement script, making it more simple and efficient to use. Also added better animation.
+* *1 hour* Reading dissertation example
