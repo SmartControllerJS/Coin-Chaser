@@ -278,3 +278,8 @@
 * *2.5 hours* Added multiplayer functionality and talked to Emma to see if method used is efficient 
 * *3 hours* Added function to unactivate a player if they disconnect from the game
 * *1 hour* Moved QR code to center of webpage above game, got rid of unnecessary buttons on page
+
+
+## Week 24
+* *2 hours* Watch Brackeys' tutorial on character movement, download CharacterController2D script template provided while removing character crouch movements
+* *3 hours* Redesigned character movement script, making it more simple and efficient to use. Also added better animation.

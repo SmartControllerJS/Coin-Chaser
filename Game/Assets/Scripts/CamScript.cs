@@ -28,8 +28,9 @@ public class CamScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
+
         foreach(KeyValuePair<GameObject, ActiveState> entry in activePlayers)
         {
             if (entry.Value.active == true)
@@ -39,6 +40,16 @@ public class CamScript : MonoBehaviour
             else {
                 entry.Key.SetActive(false);
             }
+        }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            SpawnPlayers("Player1");
+        }
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            activePlayers[Player1].active = false;
         }
 
     }

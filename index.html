@@ -107,41 +107,43 @@
 
           // Activate player character once a peer is connected
           simplePeer.on("connection", function (peer) {
-            console.log("CONNECTED");
             var nullExists = false;
             for ([player, playerid] of Object.entries(playerDict)){
               if (playerid == null){
                 playerDict[player] = peer.peer;
-                console.log("PEER ADDED");
                 console.log(playerDict);
                 unityInstance.SendMessage("Main Camera","SpawnPlayers", player);
-                console.log("SPAWNED");
                 nullExists = true;
                 break;
               }
+            }
+
+            // if over 5 players, disconnect peer
+            if (nullExists == false){
+              console.log("PEER DISCONNECTED");
+              peer.send({ type: "disconnect" });
             }
           });
           
           // Get button pressed on smartcontroller and perform function with data received
           simplePeer.on( "data",  function(message){
-            console.log("Command Recognised");
             for ([player, playerid] of Object.entries(playerDict)){
               if (playerid == message.id){
                 buttonPressed = message.data.data.button;
                 buttonState = message.data.data.state;
 
                 if (buttonPressed == "up" && buttonState == "start") {
-                  unityInstance.SendMessage(player,"JumpButton","true");
+                  unityInstance.SendMessage(player,"JumpButton");
                 } 
 
                 if (buttonPressed == "right" && buttonState == "start") {
-                  unityInstance.SendMessage(player,"RightButtonDown","true");
+                  unityInstance.SendMessage(player,"BeginMovement", 1);
                 } else if (buttonPressed == "right" && buttonState == "end") {
                   unityInstance.SendMessage(player,"StopMovement"); 
                 }
 
                 if (buttonPressed == "left" && buttonState == "start") {
-                  unityInstance.SendMessage(player,"LeftButtonDown","true");
+                  unityInstance.SendMessage(player,"BeginMovement", -1);
                 }else if (buttonPressed == "left" && buttonState == "end") {
                   unityInstance.SendMessage(player,"StopMovement"); 
                 }
