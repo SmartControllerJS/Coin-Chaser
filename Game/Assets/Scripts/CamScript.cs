@@ -45,11 +45,12 @@ public class CamScript : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             SpawnPlayers("Player1");
+            SpawnPlayers("Player2");
         }
 
         if (Input.GetButtonDown("Fire1"))
         {
-            activePlayers[Player1].active = false;
+            DespawnPlayer("Player2");
         }
 
     }
@@ -68,4 +69,15 @@ public class CamScript : MonoBehaviour
         
     }
 
+    private void DespawnPlayer(String message)
+    {
+        // if the message is a player name, activate (spawn) player
+        foreach(KeyValuePair<GameObject, ActiveState> entry in activePlayers)
+        {
+            if (message == entry.Key.name)
+            {
+                activePlayers[entry.Key].active = false;
+            }
+        }
+    }
 }

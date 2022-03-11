@@ -10,7 +10,7 @@
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=960 height=600></canvas>
+      <canvas id="unity-canvas" width=100% height=100%></canvas>
       
       <div id="qrdisplay"><div id="qrcode"></div></div>
 
@@ -23,12 +23,6 @@
       <div id="unity-mobile-warning">
         WebGL builds are not supported on mobile devices.
       </div>
-      <div id="unity-footer">
-        <div id="unity-webgl-logo"></div>
-        <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">2D-Game</div>
-      </div>
-    </div>
 
     <script>
 
@@ -52,7 +46,6 @@
 
       var loadingBar = document.querySelector("#unity-loading-bar");
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
-      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
       var mobileWarning = document.querySelector("#unity-mobile-warning");
 
       // By default Unity keeps WebGL canvas render target size matched with
@@ -72,8 +65,8 @@
           mobileWarning.style.display = "none";
         }, 5000);
       } else {
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
       }
       loadingBar.style.display = "block";
 
@@ -100,10 +93,6 @@
 
           // Display QR code element on game load
           qrDisplay.style.display = "block";
-          
-          fullscreenButton.onclick = () => {
-            unityInstance.SetFullscreen(1);
-          };
 
           // Activate player character once a peer is connected
           simplePeer.on("connection", function (peer) {
@@ -132,7 +121,7 @@
                 buttonPressed = message.data.data.button;
                 buttonState = message.data.data.state;
 
-                if (buttonPressed == "up" && buttonState == "start") {
+                if (buttonPressed == "a" && buttonState == "start") {
                   unityInstance.SendMessage(player,"JumpButton");
                 } 
 
@@ -158,6 +147,7 @@
               if (playerid == peer){
                 playerDict[player] = null;
                 console.log("DISCONNECTED");
+                unityInstance.SendMessage("Main Camera","DespawnPlayer", player);
               }
             }
           });

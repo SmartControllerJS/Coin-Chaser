@@ -1,9 +1,12 @@
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections.Generic;
+using UnityEngine.UI; // added to change score number
+using System.Collections;
 
 public class CharacterController2D : MonoBehaviour
 {
-	[SerializeField] private float m_JumpForce = 400f;							// Amount of force added when the player jumps.
+	[SerializeField] private float m_JumpForce = 600f;							// Amount of force added when the player jumps.
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
 	[SerializeField] private bool m_AirControl = false;							// Whether or not a player can steer while jumping;
 	[SerializeField] private LayerMask m_WhatIsGround;							// A mask determining what is ground to the character
@@ -15,6 +18,39 @@ public class CharacterController2D : MonoBehaviour
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
 
+    private Collider2D colliding;
+	ParticleSystem JumpParticle
+	{
+        get
+        {
+            if (_CachedJumpParticle == null)
+                _CachedJumpParticle = GetComponent<ParticleSystem>();
+            return _CachedJumpParticle;
+        }
+    }
+	public ParticleSystem _CachedJumpParticle;
+
+	List<ParticleSystem> decreaseParticles	// List of particles next to other player's scores
+	{
+        get
+        {
+			for (int particle=0; particle < _CachedDecreaseParticleList.Count; particle++){
+				if (_CachedDecreaseParticleList[particle] == null)
+				{
+					_CachedDecreaseParticleList[particle] = GetComponent<ParticleSystem>();
+				}
+			}
+            return _CachedDecreaseParticleList;
+        }
+    }
+	public List<ParticleSystem> _CachedDecreaseParticleList;
+		
+	public List<GameObject> otherPlayerList; // List of other players (not including this player)
+
+    [SerializeField] public int coins = 0;	// Score count
+	[SerializeField] public Text coinText;	// Score text object
+	[SerializeField] private float pushForce = 20f;
+
 	[Header("Events")]
 	[Space]
 
@@ -23,10 +59,17 @@ public class CharacterController2D : MonoBehaviour
 	private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
+        colliding = GetComponent<Collider2D>();
 
 		if (OnLandEvent == null)
 			OnLandEvent = new UnityEvent();
+		
+		// Make sure particle effects don't activate on player spawn
+		JumpParticle.Stop(true);
 
+		foreach (ParticleSystem otherScoreParticle in decreaseParticles){
+			otherScoreParticle.GetComponent<ParticleSystem>().Stop();
+		}
 	}
 
 	private void FixedUpdate()
@@ -46,6 +89,7 @@ public class CharacterController2D : MonoBehaviour
 					OnLandEvent.Invoke();
 			}
 		}
+
 	}
 
 
@@ -94,4 +138,96 @@ public class CharacterController2D : MonoBehaviour
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Coin")
+        {
+            Destroy(collision.gameObject);
+            coins += 10;
+			coinText.text = coins.ToString();
+        }
+
+        if (collision.tag == "JumpUp" && m_JumpForce == 600f)
+        {
+			Destroy(collision.gameObject);
+			m_JumpForce = 800f;
+			
+			// Start timer for power effect
+			StartCoroutine(ResetJumpPower(10f));
+			
+        }
+
+		if (collision.tag == "DecreaseCoin")
+        {
+			Destroy(collision.gameObject);
+			
+			StartCoroutine(DecreaseScore(2f));
+			
+        }
+
+    }
+
+	private void OnCollisionEnter2D(Collision2D other)
+	{
+		// if a player collides with another, push them away from another
+		if (other.gameObject.tag == "Player")
+		{
+			if (other.gameObject.transform.position.y == transform.position.y)
+			{
+				if (other.gameObject.transform.position.x > transform.position.x)
+				{
+					// Move player left
+					m_Rigidbody2D.velocity = new Vector2(-pushForce, m_Rigidbody2D.velocity.y);
+				} 
+				else
+				{
+					// Move player right
+					m_Rigidbody2D.velocity = new Vector2(+pushForce, m_Rigidbody2D.velocity.y);
+				}
+			}
+			
+		}
+	}
+
+	private IEnumerator ResetJumpPower(float waitTime)
+	{
+		// Add particle effect
+		JumpParticle.GetComponent<ParticleSystem>();
+		JumpParticle.Play();
+
+		yield return new WaitForSeconds(waitTime);
+		m_JumpForce = 600f;
+
+		JumpParticle.Stop();
+	}
+
+	private IEnumerator DecreaseScore(float waitTime)
+	{
+		int i = 0;
+
+		// Decrease the score of all other players by 5
+		foreach (GameObject otherPlayer in otherPlayerList) {
+			CharacterController2D script = otherPlayer.GetComponent<CharacterController2D>();
+			if (script.coins > 0) {
+				script.coins = script.coins - 5;
+				script.coinText.text = (script.coins).ToString();
+
+				// Attempt at particles. Doesn't work for unknown reason
+				decreaseParticles[i].GetComponent<ParticleSystem>().Play();
+
+				// Start timer for power effect
+				
+			}
+			i++;
+		}
+
+		yield return new WaitForSeconds(waitTime);
+
+		foreach (ParticleSystem otherScoreParticle in decreaseParticles){
+			otherScoreParticle.GetComponent<ParticleSystem>().Stop();
+		}
+
+	}
+
 }

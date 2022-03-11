@@ -292,3 +292,43 @@
 * *2 hours* Watch Brackeys' tutorial on character movement, download CharacterController2D script template provided while removing character crouch movements
 * *3 hours* Redesigned character movement script, making it more simple and efficient to use. Also added better animation.
 * *1 hour* Reading dissertation example
+* *1 hour* Created level layout
+
+### 1 March 2022
+* *3 hours* Split player script into two purposed scripts. CharacterController2D for physics affecting the movement and collisions, and PlayerMovement for the character controls and score count (once implemented).
+* *1 hour* Combined left and right movement to one method, taking an integer parameter [-1, 0, 1] to represent movement
+* *0.5 hour* Simplified jump method to have less if conditions that take boolean values
+
+### 2 March 2022
+* *7 hours* 2D tiling for level design worked awkwardly with the grid, being slightly off center. Deleted tiling assets and instead created a 2D Sprite Shape object which has a more flexible design approach
+* *1 hour* The polygon colider on the players allowed them to glitch through walls due to the complex shape flipping with animation. Used a simpler capsule collider instead.
+
+### 3 March 2022
+* *3.5 hours* Added coin collection functionality with each player having their own score count in their copies of the script. Got Thatleah_Pixel font from Unity asset store.
+* *1.5 hours* Player-to-Player collision now makes them bounce slightly
+* *2 hours* Added jump power-up with functionality
+* *2 hours* Added speed power-up with functionality
+* *3.5 hours* Added decrease score power-up, does not work and results in errors.
+
+### 4 March 2022
+* *2 hours* Fixed decrease score functionality, now takes away from other player scores
+* *6 hours* Added particle systems to each of the power ups. Tried use Universal Render Pipeline first but that changed colour with players making it unusable for fixed power-up feedback.
+* *1 hour* Meeting with supervisor and peers. Advisor approved of trying to get game finished for next week to move to evaluation.
+
+## Week 25
+
+### 7 March 2022
+* *4 hours* Creating scoreboard canvas that pauses the game when active.
+
+### 8 March 2022
+* *1 hour* Moved some level assets so that they fit the canvas when the game is built 
+* *1 hour* Realized there is a bug with the particle system implemented last week. Only shows one particle, then no other.
+
+### 9 March 2022
+* *5 hours* Tried to fix the particle system. No success but use of SetActive might be a problem. Can use Play and Stop instead but these seem not to change anything.
+
+### 11 March 2022
+* *3 hours* Reworked the particle system logic. Particles now display as required with the Play() and Stop() functions rather than the SetAwake() which only looped once.
+* *2.5 hours* Added functioanlity to the scores on the leaderboard. Now they update when the leaderboard appears and then reset each player score when it disapears
+* *.5 hour* Changed the jump button on the controller to the "a" button
+* *1 hour* Meeting with supervisor and peers. Showed game update, asked about plan for evaluation, discussed tasks for next week.

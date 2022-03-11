@@ -13,19 +13,25 @@ public class PlayerMovement : MonoBehaviour
     float horizontalMove = 0f;
     bool jump = false;
     private Vector2 originalPos;
+    public ParticleSystem SpeedParticle{
+        get
+        {
+            if (_CachedSpeedParticle == null)
+                _CachedSpeedParticle = GetComponent<ParticleSystem>();
+            return _CachedSpeedParticle;
+        }
+    }
+    public ParticleSystem _CachedSpeedParticle;
 
     // Start is called before the first frame update
     void Awake()
     {
-        
+        SpeedParticle.Stop();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (horizontalMove == 0f){
-            horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-        }
         
         m_Animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
@@ -50,13 +56,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == 7)
-        {
-            Destroy(other.gameObject);
-        }
         if (other.gameObject.layer == 8)
         {
             transform.position = originalPos;
+        }
+
+        if (other.tag == "SpeedUp" && runSpeed == 40f)
+        {
+			runSpeed = runSpeed * 1.3f;
+            Destroy(other.gameObject);
+
+			// Start timer for power effect
+			StartCoroutine(ResetSpeedPower(10f));
         }
     }
 
@@ -76,7 +87,11 @@ public class PlayerMovement : MonoBehaviour
         horizontalMove = 0;
     }
 
-
-
-
+    private IEnumerator ResetSpeedPower(float waitTime)
+	{
+        SpeedParticle.Play();
+		yield return new WaitForSeconds(waitTime);
+        SpeedParticle.Stop();
+        runSpeed = 40f;
+	}
 }
