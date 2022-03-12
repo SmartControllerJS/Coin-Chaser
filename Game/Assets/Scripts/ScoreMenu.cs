@@ -13,26 +13,19 @@ public class ScoreMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Pause();
+        StartCoroutine(Pause());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (GameIsPaused)
-            {
-                Resume();
-            } else
-            {
-                Pause();
-            }
-        }
+        
     }
 
-    void Resume()
+    private IEnumerator Resume()
     {
+        Debug.Log("Started Resume at timestamp : " + Time.time);
+
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
@@ -43,10 +36,16 @@ public class ScoreMenu : MonoBehaviour
             player.GetComponent<CharacterController2D>().coins = 0;
             player.GetComponent<CharacterController2D>().coinText.text = "0";
         }
+
+        yield return new WaitForSecondsRealtime(10f);
+
+        Debug.Log("Finished Resume at timestamp : " + Time.time);
+        StartCoroutine(Pause());
     }
 
-    void Pause()
+    private IEnumerator Pause()
     {
+        Debug.Log("Started Pause at timestamp : " + Time.time);
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
@@ -56,5 +55,11 @@ public class ScoreMenu : MonoBehaviour
         {
             scoreList[score].text = playerList[score].GetComponent<CharacterController2D>().coinText.text;
         }
+
+        yield return new WaitForSecondsRealtime(30f);
+
+        Debug.Log("Finished Pause at timestamp : " + Time.time);
+        StartCoroutine(Resume());
+        
     }
 }
