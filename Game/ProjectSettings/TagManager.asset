@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Coin
+  - JumpUp
+  - SpeedUp
+  - DecreaseCoin
   layers:
   - Default
   - TransparentFX
@@ -12,7 +16,7 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
+  - Background
   - DropReset
   - 
   - 
@@ -43,4 +47,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Entity
+    uniqueID: 2950981385
     locked: 0
