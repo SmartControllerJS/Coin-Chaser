@@ -179,12 +179,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_GroundCheck: {fileID: 1050722439250585539}
-  JumpParticle: {fileID: 2333764858181878941}
-  decreaseParticles:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  _CachedJumpParticle: {fileID: 0}
+  _CachedDecreaseParticleList: []
   otherPlayerList:
   - {fileID: 0}
   - {fileID: 0}
@@ -192,6 +188,8 @@ MonoBehaviour:
   - {fileID: 0}
   coins: 0
   coinText: {fileID: 0}
+  coinObject: {fileID: 1925025644858893541, guid: 5f5e26d0356d5314287a93dddc959d11, type: 3}
+  coinSpawnZone: {fileID: 9093382122388397822, guid: 9bb73bee257d1fd40a09ebcf78592d53, type: 3}
   pushForce: 20
   OnLandEvent:
     m_PersistentCalls:
@@ -223,7 +221,7 @@ MonoBehaviour:
   controller: {fileID: 1050722438598283439}
   m_Animator: {fileID: 7092573424735352754}
   runSpeed: 40
-  SpeedParticle: {fileID: 301797896634324059}
+  _CachedSpeedParticle: {fileID: 0}
 --- !u!70 &1050722438598283437
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -314,11 +312,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3608629972655878510, guid: c5efad7f92c754143a1f62cd01fc76b9, type: 3}
   m_PrefabInstance: {fileID: 1330636742281377269}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &2333764858181878941 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3608629972655878504, guid: c5efad7f92c754143a1f62cd01fc76b9, type: 3}
-  m_PrefabInstance: {fileID: 1330636742281377269}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9175656540176188675
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -403,10 +396,5 @@ PrefabInstance:
 --- !u!4 &301797896634324061 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8891874317817106782, guid: 5b7b34ffeee5d5740949868454c1e001, type: 3}
-  m_PrefabInstance: {fileID: 9175656540176188675}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &301797896634324059 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8891874317817106776, guid: 5b7b34ffeee5d5740949868454c1e001, type: 3}
   m_PrefabInstance: {fileID: 9175656540176188675}
   m_PrefabAsset: {fileID: 0}

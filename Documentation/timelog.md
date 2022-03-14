@@ -332,3 +332,11 @@
 * *2.5 hours* Added functioanlity to the scores on the leaderboard. Now they update when the leaderboard appears and then reset each player score when it disapears
 * *.5 hour* Changed the jump button on the controller to the "a" button
 * *1 hour* Meeting with supervisor and peers. Showed game update, asked about plan for evaluation, discussed tasks for next week.
+
+## Week 26
+
+### 14 March 2022
+* *3.5 hours* 2 Coins in game at any one time, touching one moves it elsewhere on screen and adds 10 to player score
+* *4.5 hours* Pause and Game timers now update every second when active, looping between themselves 
+* *3 hours* Player effectors drop from the top to the bottom of the screen, generating themselves every second
+* *1 hour* Clean up C# scripts

@@ -1,8 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -23,17 +20,14 @@ public class PlayerMovement : MonoBehaviour
     }
     public ParticleSystem _CachedSpeedParticle;
 
-    // Start is called before the first frame update
     void Awake()
     {
         SpeedParticle.Stop();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
-        m_Animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+         m_Animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
         if (Input.GetButtonDown("Jump"))
         {
@@ -58,15 +52,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.layer == 8)
         {
+            // If the player drops from the map, spawn them back in
             transform.position = originalPos;
         }
 
         if (other.tag == "SpeedUp" && runSpeed == 40f)
-        {
+        {   
+            // Start timer for power effect
 			runSpeed = runSpeed * 1.3f;
             Destroy(other.gameObject);
-
-			// Start timer for power effect
 			StartCoroutine(ResetSpeedPower(10f));
         }
     }

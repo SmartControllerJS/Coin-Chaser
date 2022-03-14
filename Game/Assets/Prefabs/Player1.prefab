@@ -179,12 +179,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_GroundCheck: {fileID: 4437467117919386973}
-  JumpParticle: {fileID: 0}
-  decreaseParticles:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  _CachedJumpParticle: {fileID: 0}
+  _CachedDecreaseParticleList: []
   otherPlayerList:
   - {fileID: 0}
   - {fileID: 0}
@@ -192,6 +188,8 @@ MonoBehaviour:
   - {fileID: 0}
   coins: 0
   coinText: {fileID: 0}
+  coinObject: {fileID: 1925025644858893541, guid: 5f5e26d0356d5314287a93dddc959d11, type: 3}
+  coinSpawnZone: {fileID: 9093382122388397822, guid: 9bb73bee257d1fd40a09ebcf78592d53, type: 3}
   pushForce: 20
   OnLandEvent:
     m_PersistentCalls:
@@ -223,7 +221,7 @@ MonoBehaviour:
   controller: {fileID: 4437467117770590769}
   m_Animator: {fileID: 5867072502846876972}
   runSpeed: 40
-  SpeedParticle: {fileID: 3977194408507788997}
+  _CachedSpeedParticle: {fileID: 0}
 --- !u!70 &4437467117770590771
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -410,10 +408,5 @@ PrefabInstance:
 --- !u!4 &3977194408507788995 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8891874317817106782, guid: 5b7b34ffeee5d5740949868454c1e001, type: 3}
-  m_PrefabInstance: {fileID: 5501038826097647517}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &3977194408507788997 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8891874317817106776, guid: 5b7b34ffeee5d5740949868454c1e001, type: 3}
   m_PrefabInstance: {fileID: 5501038826097647517}
   m_PrefabAsset: {fileID: 0}

@@ -149,12 +149,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_GroundCheck: {fileID: 8618828436113738487}
-  JumpParticle: {fileID: 6443492695140788649}
-  decreaseParticles:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  _CachedJumpParticle: {fileID: 0}
+  _CachedDecreaseParticleList: []
   otherPlayerList:
   - {fileID: 0}
   - {fileID: 0}
@@ -162,6 +158,8 @@ MonoBehaviour:
   - {fileID: 0}
   coins: 0
   coinText: {fileID: 0}
+  coinObject: {fileID: 1925025644858893541, guid: 5f5e26d0356d5314287a93dddc959d11, type: 3}
+  coinSpawnZone: {fileID: 9093382122388397822, guid: 9bb73bee257d1fd40a09ebcf78592d53, type: 3}
   pushForce: 10
   OnLandEvent:
     m_PersistentCalls:
@@ -193,7 +191,7 @@ MonoBehaviour:
   controller: {fileID: 8618828435426819483}
   m_Animator: {fileID: 1974038171799886470}
   runSpeed: 40
-  SpeedParticle: {fileID: 9023211610102118767}
+  _CachedSpeedParticle: {fileID: 0}
 --- !u!70 &8618828435426819481
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -326,11 +324,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8891874317817106782, guid: 5b7b34ffeee5d5740949868454c1e001, type: 3}
   m_PrefabInstance: {fileID: 458993000374691895}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &9023211610102118767 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8891874317817106776, guid: 5b7b34ffeee5d5740949868454c1e001, type: 3}
-  m_PrefabInstance: {fileID: 458993000374691895}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7746067804331956417
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -403,10 +396,5 @@ PrefabInstance:
 --- !u!4 &6443492695140788655 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3608629972655878510, guid: c5efad7f92c754143a1f62cd01fc76b9, type: 3}
-  m_PrefabInstance: {fileID: 7746067804331956417}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &6443492695140788649 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3608629972655878504, guid: c5efad7f92c754143a1f62cd01fc76b9, type: 3}
   m_PrefabInstance: {fileID: 7746067804331956417}
   m_PrefabAsset: {fileID: 0}

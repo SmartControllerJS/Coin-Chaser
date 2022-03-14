@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections.Generic;
-using UnityEngine.UI; // added to change score number
+using UnityEngine.UI; 
 using System.Collections;
 
 public class CharacterController2D : MonoBehaviour
@@ -19,7 +19,7 @@ public class CharacterController2D : MonoBehaviour
 	private Vector3 m_Velocity = Vector3.zero;
 
     private Collider2D colliding;
-	ParticleSystem JumpParticle
+	ParticleSystem JumpParticle	
 	{
         get
         {
@@ -28,9 +28,9 @@ public class CharacterController2D : MonoBehaviour
             return _CachedJumpParticle;
         }
     }
-	public ParticleSystem _CachedJumpParticle;
+	public ParticleSystem _CachedJumpParticle;	// Holds the Jump Particle as the Stop() erases the un-cached particle
 
-	List<ParticleSystem> decreaseParticles	// List of particles next to other player's scores
+	List<ParticleSystem> decreaseParticles	
 	{
         get
         {
@@ -43,12 +43,14 @@ public class CharacterController2D : MonoBehaviour
             return _CachedDecreaseParticleList;
         }
     }
-	public List<ParticleSystem> _CachedDecreaseParticleList;
+	public List<ParticleSystem> _CachedDecreaseParticleList;	// List of particles next to other player's scores
 		
 	public List<GameObject> otherPlayerList; // List of other players (not including this player)
 
     [SerializeField] public int coins = 0;	// Score count
 	[SerializeField] public Text coinText;	// Score text object
+	public GameObject coinObject;
+	public GameObject coinSpawnZone;
 	[SerializeField] private float pushForce = 20f;
 
 	[Header("Events")]
@@ -96,7 +98,7 @@ public class CharacterController2D : MonoBehaviour
 	public void Move(float move, bool jump)
 	{
 		
-		//only control the player if grounded or airControl is turned on
+		// Only control the player if grounded or airControl is turned on
 		if (m_Grounded || m_AirControl)
 		{
 
@@ -146,24 +148,29 @@ public class CharacterController2D : MonoBehaviour
             Destroy(collision.gameObject);
             coins += 10;
 			coinText.text = coins.ToString();
+
+			// Spawn a new coin randomly within spawn bounds for each coin that is destroyed
+			MeshCollider spawnBounds = coinSpawnZone.GetComponent<MeshCollider>();
+			float screenX = Random.Range(spawnBounds.bounds.min.x, spawnBounds.bounds.max.x);
+			float screenY = Random.Range(spawnBounds.bounds.min.y, spawnBounds.bounds.max.y);
+			Vector2 position = new Vector2(screenX, screenY);
+			Instantiate(coinObject, position, coinObject.transform.rotation);
         }
 
         if (collision.tag == "JumpUp" && m_JumpForce == 600f)
         {
+			// Start timer for power effect
 			Destroy(collision.gameObject);
 			m_JumpForce = 800f;
-			
-			// Start timer for power effect
 			StartCoroutine(ResetJumpPower(10f));
 			
         }
 
 		if (collision.tag == "DecreaseCoin")
         {
+			// Decrease other players coin count
 			Destroy(collision.gameObject);
-			
 			StartCoroutine(DecreaseScore(2f));
-			
         }
 
     }
@@ -198,7 +205,6 @@ public class CharacterController2D : MonoBehaviour
 
 		yield return new WaitForSeconds(waitTime);
 		m_JumpForce = 600f;
-
 		JumpParticle.Stop();
 	}
 
@@ -212,12 +218,7 @@ public class CharacterController2D : MonoBehaviour
 			if (script.coins > 0) {
 				script.coins = script.coins - 5;
 				script.coinText.text = (script.coins).ToString();
-
-				// Attempt at particles. Doesn't work for unknown reason
 				decreaseParticles[i].GetComponent<ParticleSystem>().Play();
-
-				// Start timer for power effect
-				
 			}
 			i++;
 		}
