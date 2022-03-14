@@ -340,3 +340,4 @@
 * *4.5 hours* Pause and Game timers now update every second when active, looping between themselves 
 * *3 hours* Player effectors drop from the top to the bottom of the screen, generating themselves every second
 * *1 hour* Clean up C# scripts
+* *2 hours* Created evaluation form and updated supervisor on Teams for review
