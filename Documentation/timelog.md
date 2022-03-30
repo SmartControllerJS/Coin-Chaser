@@ -15,7 +15,6 @@
 ## Week 1
 
 ### 20 Sept 2021
-
 * *10 hours* Read the project proposals 
 
 ### 21 Sept 2021
@@ -31,7 +30,7 @@
 * *1 hour* Recieved project allocation and emailed supervisor to arrange a meeting
 
 ### 29 Sept 2021
-* *4 hours* Background reseaech into key project terms such as "What makes an interactive experience?". Added to reference manager.
+* *4 hours* Background research into key project terms such as "What makes an interactive experience?". Added to reference manager.
 
 ### 30 Sept 2021
 * *2 hours* Preperation for meeting with supervisor
