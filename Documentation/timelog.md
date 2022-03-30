@@ -50,7 +50,7 @@
 * *2 hours* Created presentation for supervisor meeting
 
 ### 8 Oct 2021
-* *1.25 hours* Meeting with Supervisor
+* *1.5 hours* Meeting with Supervisor
 
 ## Week 4
 
