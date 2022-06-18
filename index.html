@@ -141,7 +141,7 @@
           });
 
           // If a player is disconnected, unactivate player
-          simplePeer.on("close", function (peer) {
+          simplePeer.on("disconnected", function (peer) {
             console.log(peer);
             for ([player, playerid] of Object.entries(playerDict)){
               if (playerid == peer){
