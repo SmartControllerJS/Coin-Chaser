@@ -43,5 +43,5 @@ To play the game online simply navigate to <a href=https://smartcontrollerjs.git
 * Download this repository and open the Game folder on Unity
 * Navigate to the WebG "Resolution and Presentation" section of the "Project Settings" menu for the game
 * Select the "WebsiteTemplate" option as the new WebGL Template
-* Build and run the game as a WebGL build
+* Build and run the game as a WebGL build, replacing the Build directory with the new build
 * Scan the QR code with your smartphone and get ready to play!
