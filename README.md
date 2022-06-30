@@ -1,7 +1,47 @@
-# Coin Chaser!
+<!-- Guide -->
+<details>
+  <summary>Guide</summary>
+  <ol>
+    <li>
+      <a href="#what-is-coin-chaser">What is Coin Chaser?</a>
+      <ul>
+        <li><a href="#motivations-and-aims">Motivations and Aims</a></li>
+        <li><a href="#tools-and-technologies">Tools and Technologies</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#playing-the-game">Playing the Game</a>
+      <ul>
+        <li><a href="#play-online">Play Online</a></li>
+        <li><a href="#play-locally">Play Locally</a></li>
+      </ul>
+    </li>
+  </ol>
+</details>
+
+## What is Coin Chaser?
+### Motivations and Aims
 This is a repository for my Level 4 university project. The goal of the project is to create an interactive game for the public to play using a screen attached to a building (ARC) and smartphones that allow the players to control the game on that screen. 
 
+### Tools and Technologies
+* <a href="https://unity.com/">Unity Real-Time Development Platform</a>: to develop the game for the public display
+* <a href="https://github.com/">GitHub</a>: to store the project in a backed-up repository and manage issue tracking
+* <a href="https://pages.github.com/">GitHub Pages</a>: to launch the game onto a website using the index file at the root of the GitHub repository
+* <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API">WebGL</a>: a JavaScript API, used to render the game onto the hosted website and enable game interaction through browser scripting
+* <a href="https://smartcontrollerjs.github.io/SmartController/">SmartController</a>: a JavaScript package that must be imported into the browser script to provide the phone controller interface and to establish communication between the smartphone and display
+
+## Playing the Game
+
+### Play Online
+To play the game online simply navigate to <a href=https://smartcontrollerjs.github.io/Coin-Chaser/>https://smartcontrollerjs.github.io/Coin-Chaser/</a> and scan the displayed QR code with your smartphone. This will send you to a controller interface as shown below, where you can start to control your character using the SmartController!
 
 ![Alt Text](https://imgur.com/GTqxssg.gif)
-
-![Alt Text](https://imgur.com/a/llHjYzq)
+### Play Locally
+**Note:** The locally ran version may encounter WebRTC errors due to browser extensions. For this reason, please run the local game on Chrome rather than browsers like Firefox.
+* Download and install <a href="https://unity.com/">Unity Hub</a>
+* Install the WebGL Build Support module on the Unity Hub
+* Download this repository and open the Game folder on Unity
+* Navigate to the WebG "Resolution and Presentation" section of the "Project Settings" menu for the game
+* Select the "WebsiteTemplate" option as the new WebGL Template
+* Build and run the game as a WebGL build
+* Scan the QR code with your smartphone and get ready to play!
