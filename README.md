@@ -40,7 +40,7 @@ To play the game online simply navigate to <a href=https://smartcontrollerjs.git
 **Note:** The locally ran version may encounter WebRTC errors due to browser extensions. For this reason, please run the local game on Chrome rather than browsers like Firefox.
 * Download and install <a href="https://unity.com/">Unity Hub</a>
 * Install the WebGL Build Support module on the Unity Hub
-* Download this repository and open the Game folder on Unity
+* Download this repository and open the Game directory as a Unity project
 * Navigate to the WebG "Resolution and Presentation" section of the "Project Settings" menu for the game
 * Select the "WebsiteTemplate" option as the new WebGL Template
 * Build and run the game as a WebGL build, replacing the Build directory with the new build
