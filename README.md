@@ -1,24 +1,3 @@
-<!-- Guide -->
-<details>
-  <summary>Guide</summary>
-  <ol>
-    <li>
-      <a href="#what-is-coin-chaser">What is Coin Chaser?</a>
-      <ul>
-        <li><a href="#motivations-and-aims">Motivations and Aims</a></li>
-        <li><a href="#tools-and-technologies">Tools and Technologies</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#playing-the-game">Playing the Game</a>
-      <ul>
-        <li><a href="#play-online">Play Online</a></li>
-        <li><a href="#play-locally">Play Locally</a></li>
-      </ul>
-    </li>
-  </ol>
-</details>
-
 ## What is Coin Chaser?
 ### Motivations and Aims
 This is a repository for my Level 4 university project. The goal of the project is to create an interactive game for the public to play using a screen attached to a building (ARC) and smartphones that allow the players to control the game on that screen. 
