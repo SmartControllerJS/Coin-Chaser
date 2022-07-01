@@ -340,3 +340,7 @@
 * *3 hours* Player effectors drop from the top to the bottom of the screen, generating themselves every second
 * *1 hour* Clean up C# scripts
 * *2 hours* Created evaluation form and updated supervisor on Teams for review
+
+## Exam Period and Summer
+* *158 hours* Dissertation Work
+* *5.5 hours* Presentation Work
