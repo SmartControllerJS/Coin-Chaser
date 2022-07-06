@@ -1,4 +1,5 @@
 ## Playing the Game
+**Note:** During our implementation of the QR code, it was found that the university WiFi service "eduroam" blocked connections using the SmartController package due to its network security configurations. Instead, it is recommended to use mobile data or other WiFi services on campus to allow for connection establishment between the smartphone and display.
 
 ### Play Online
 To play the game online simply navigate to <a href=https://smartcontrollerjs.github.io/Coin-Chaser/>https://smartcontrollerjs.github.io/Coin-Chaser/</a> and scan the displayed QR code with your smartphone. This will send you to a controller interface as shown below, where you can start to control your character using the SmartController!
